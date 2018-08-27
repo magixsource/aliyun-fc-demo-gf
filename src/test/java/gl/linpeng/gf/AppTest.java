@@ -1,6 +1,7 @@
 package gl.linpeng.gf;
 
 import com.alibaba.fastjson.JSON;
+import gl.linpeng.gf.base.JsonDTO;
 import gl.linpeng.gf.base.ServerlessRequest;
 import gl.linpeng.gf.base.ServerlessResponse;
 import org.junit.Assert;
@@ -13,11 +14,14 @@ import org.junit.Test;
 public class AppTest {
     App app;
     ServerlessRequest request;
+    JsonDTO dto;
     @Before
     public void setUp() {
         app = new App();
         String content = "Green Tim";
-        request = ServerlessRequest.builder().setRawBody(content).setObjectBody(content).build();
+        dto = new JsonDTO();
+        dto.setContent(content);
+        request = ServerlessRequest.builder().setObjectBody(dto).build();
     }
 
     /**
